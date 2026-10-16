@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: Inter, sans-serif; }
+  button, input, select { font: inherit; }
+}
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(18deg); }
+  40% { transform: rotate(-10deg); }
+  60% { transform: rotate(18deg); }
+  80% { transform: rotate(0deg); }
+}
+@keyframes ring {
+  0%, 70%, 100% { transform: scale(1); opacity: .4; }
+  35% { transform: scale(1.13); opacity: 0; }
+}
+.bot-wave { display: inline-block; transform-origin: 75% 75%; animation: wave 1.8s ease-in-out infinite; }
+.bot-ring { animation: ring 2.6s ease-out infinite; }
+.bot-hint { animation: hint-in .45s ease-out both; }
+@keyframes hint-in {
+  from { opacity: 0; transform: translateY(8px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@layer components {
+  .btn-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-teal font-semibold text-white transition hover:bg-[#146e6c] active:scale-[.98]; }
+  .nav-link { @apply text-sm font-medium text-slate-600 transition hover:text-teal; }
+  .eyebrow { @apply flex items-center gap-2 text-xs font-bold uppercase tracking-[.18em] text-teal; }
+  .section-title { @apply max-w-xl font-display text-4xl font-semibold leading-tight tracking-tight sm:text-5xl; }
+  .avatar { @apply grid h-9 w-9 place-items-center rounded-full border-2 border-mint text-[10px] font-bold text-white; }
+  .field { @apply block; }
+  .field > span { @apply mb-2 block text-sm font-semibold text-navy; }
+  .field input, .field select { @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-navy outline-none transition focus:border-teal focus:ring-2 focus:ring-teal/10; }
+}
+.chat-markdown { overflow-wrap: anywhere; }
+.chat-markdown p + p { margin-top: .75rem; }
+.chat-markdown ul, .chat-markdown ol { margin: .6rem 0; padding-left: 1.35rem; }
+.chat-markdown ul { list-style-type: disc; }
+.chat-markdown ol { list-style-type: decimal; }
+.chat-markdown li + li { margin-top: .35rem; }
+.chat-markdown li > p { margin: 0; }
+.chat-markdown strong { font-weight: 700; }
